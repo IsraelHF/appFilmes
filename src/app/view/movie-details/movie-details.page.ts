@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { OmdbapiService } from 'src/app/services/omdbapi.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-details.page.scss'],
 })
 export class MovieDetailsPage implements OnInit {
+  info: any;
 
-  constructor() { }
+  constructor(
+    private actRoute: ActivatedRoute,
+    private omdbapi: OmdbapiService
+  ) {}
 
   ngOnInit() {
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.omdbapi.getById(id).subscribe((result) => (this.info = result));
   }
-
 }
