@@ -7,6 +7,7 @@ export enum SearchType {
   movie = 'movie',
   series = 'series',
   episode = 'episode',
+  game = 'game'
 }
 
 @Injectable({
@@ -14,7 +15,7 @@ export enum SearchType {
 })
 export class OmdbapiService {
   url = 'http://www.omdbapi.com';
-  apiKey = '7b67e4bc';
+  apiKey = 'fe7ed496';
 
   constructor(private http: HttpClient) {}
 
